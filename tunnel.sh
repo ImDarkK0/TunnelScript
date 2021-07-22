@@ -1,8 +1,14 @@
 #!/bin/sh
 # SSH Tunnel Auto Script
 # Version : 2.2.0
-
 echo "After this operation, Stunnel, Dropbear, Squid and Badvpn will be installed on your server."
+read -r -p "Are you sure? [y/N] " response
+if [[ ! "$response" =~ ^[yY]$ ]]
+then
+  echo "Abort.";
+  exit 100
+fi
+
 read -p "Do you want to continue? [y/n]" CONT
 if [[ ! $CONT =~ ^[Yy]$ ]]; then
   echo "Abort.";
